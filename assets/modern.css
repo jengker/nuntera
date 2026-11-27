@@ -26,7 +26,7 @@ header.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(34,30,20
     flex-direction:column;gap:0;padding:8px 24px 16px;
     box-shadow:0 24px 40px -24px rgba(34,30,20,.3);
   }
-  nav.menu.open{display:flex}
+  body.nav-open nav.menu{display:flex}
   nav.menu a{padding:13px 2px;border-bottom:1px solid var(--line);font-size:15.5px}
   nav.menu a:last-child{border-bottom:none}
 }
@@ -61,7 +61,7 @@ body.menu-open{overflow:hidden}
 .btn-solid:hover,.nav .cta:hover{background:#000;transform:translateY(-1px);box-shadow:0 14px 28px -12px rgba(34,30,20,.5)}
 .btn-gold{background:var(--gold);color:var(--charcoal);box-shadow:0 10px 24px -12px rgba(240,192,32,.55)}
 .btn-gold:hover{background:#e6b514;transform:translateY(-1px)}
-.btn-ghost{border:1.5px solid var(--line);background:var(--surface)}
+.btn-ghost{border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
 .btn-ghost:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
 
 /* ====== KARTU: hover lift ====== */
@@ -81,6 +81,9 @@ body.menu-open{overflow:hidden}
   background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,0));
   border-radius:2px;
 }
+/* Warna teks sampul: terang di sampul gelap, gelap di sampul emas */
+.item .book,.shelf .book{color:#f5f3ec}
+.item .book.cf4,.shelf .book.cf4{color:#211d13}
 
 /* ====== SEKSI: ritme napas ====== */
 section{scroll-margin-top:76px}
