@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+<b:include data='blog' name='all-head-content'/>
+<title><data:blog.pageTitle/></title>
+<b:if cond='data:view.isPost'>
+  <meta expr:content='data:view.description.escaped' name='description'/>
+</b:if>
+<link href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+<link href='https://blogger.googleusercontent.com/img/b/REPLACE-LOGO-URL/s1600/logo-nuntera.png' rel='icon' type='image/png'/>
+<b:skin><![CDATA[
+
+  :root{
+    --paper:#faf8f1;
+    --surface:#fffdf8;
+    --ink:#221e14;
+    --muted:#6d6650;
+    --line:#e8e1cf;
+    --gold:#f0c020;
+    --gold-deep:#8a6a08;
+    --gold-soft:#faf3d8;
+    --charcoal:#211d13;
+    --radius:14px;
+  }
+  ::selection{background:var(--gold);color:var(--charcoal)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15;letter-spacing:-.01em}
+
+  /* ====== NAV ====== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,248,241,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s;
+  }
+  header.scrolled{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:.02em}
+  .brand img{height:40px;width:auto;display:block}
+  nav.menu{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--muted)}
+  nav.menu a:hover{color:var(--gold-deep)}
+  .nav .cta{
+    background:var(--charcoal);color:var(--gold);padding:9px 20px;border-radius:999px;
+    font-size:14px;font-weight:600;transition:transform .15s, background .2s;
+  }
+  .nav .cta:hover{background:#000}
+  .nav .cta:active{transform:translateY(1px)}
+  @media(max-width:820px){nav.menu{display:none}}
+
+  /* ====== HERO ====== */
+  .hero{padding:72px 0 64px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:20px;
+  }
+  .kicker::before{content:"";width:26px;height:2px;background:var(--gold)}
+  .hero h1{font-size:clamp(38px,5vw,58px);font-weight:800}
+  .hero h1 em{font-style:italic;color:var(--gold-deep)}
+  .hero p.lead{margin:22px 0 30px;font-size:17.5px;color:var(--muted);max-width:52ch}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 28px;border-radius:999px;font-weight:600;font-size:15.5px;
+    transition:transform .15s, background .2s, border-color .2s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--gold);color:var(--charcoal)}
+  .btn-solid:hover{background:#ddb015}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+
+  .hero-books{position:relative;height:420px}
+  .book{
+    position:relative;border-radius:4px 10px 10px 4px;
+    box-shadow:0 24px 48px rgba(20,40,30,.22), 0 4px 10px rgba(20,40,30,.12);
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:20px 16px 18px 24px;color:#f5f3ec;
+    font-family:'Playfair Display',serif;
+  }
+  .book::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:10px;
+    background:linear-gradient(90deg,rgba(0,0,0,.38),rgba(255,255,255,.10) 60%,rgba(0,0,0,.12));
+    border-radius:4px 0 0 4px;
+  }
+  .book::after{
+    content:"";position:absolute;right:6px;top:6px;bottom:6px;width:1px;
+    background:rgba(255,255,255,.16);
+  }
+  .book .b-imprint{font-family:'Plus Jakarta Sans',sans-serif;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+  .book .b-title{font-size:22px;font-weight:700;line-height:1.2}
+  .book .b-author{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;letter-spacing:.06em;opacity:.85}
+  .hero-books .book{position:absolute;width:190px;height:285px}
+  .hb1{top:30px;left:8%;transform:rotate(-7deg);z-index:1;background:linear-gradient(160deg,#3a3323,#1f1b10)}
+  .hb2{top:0;left:38%;transform:rotate(3deg);z-index:3;background:linear-gradient(160deg,#f0c020,#c99a10);color:#211d13}
+  .hb2::before{background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.28) 60%,rgba(0,0,0,.10))}
+  .hb2 .rule{background:rgba(0,0,0,.4)}
+  .hb3{top:70px;left:66%;transform:rotate(9deg);z-index:2;background:linear-gradient(160deg,#2e2b26,#17150f)}
+  .hero-books .ring{
+    position:absolute;inset:8% 4%;border:1.5px solid var(--line);border-radius:50% 42% 55% 45%;
+    z-index:0;
+  }
+
+  /* ====== STRIP ====== */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .strip .wrap{display:flex;justify-content:space-between;gap:16px;padding:18px 24px;flex-wrap:wrap}
+  .strip span{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .strip span b{color:var(--gold-deep);font-weight:600}
+
+  /* ====== SECTIONS ====== */
+  section{padding:88px 0}
+  .sec-head{max-width:640px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);font-weight:700;margin-top:14px}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:16.5px}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start}
+  .manifesto{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(22px,2.6vw,30px);
+    line-height:1.45;letter-spacing:-.01em;
+  }
+  .manifesto em{font-style:italic;color:var(--gold-deep)}
+  .manifesto .lead-in{color:var(--muted)}
+  .about-text{margin-top:30px;display:grid;gap:16px}
+  .about-text p{color:var(--muted);font-size:16px;max-width:58ch}
+  .about-text p strong{color:var(--ink);font-weight:600}
+  .about-sign{
+    margin-top:8px;display:flex;align-items:center;gap:16px;
+    padding-top:22px;border-top:1px solid var(--line);
+  }
+  .about-sign .avatar{
+    width:52px;height:52px;border-radius:50%;background:var(--charcoal);
+    color:var(--gold);display:grid;place-items:center;
+    font-family:'Playfair Display',serif;font-size:18px;font-weight:800;
+  }
+  .about-sign .who b{display:block;font-size:15px}
+  .about-sign .who span{font-size:13px;color:var(--muted)}
+  .facts{display:grid;border-top:1px solid var(--line)}
+  .fact{display:flex;gap:18px;padding:24px 4px;border-bottom:1px solid var(--line);align-items:baseline;transition:padding-left .25s}
+  .fact:hover{padding-left:12px}
+  .fact .n{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold-deep);min-width:34px}
+  .fact h4{font-size:15.5px;font-weight:700;margin-bottom:3px}
+  .fact p{font-size:13.5px;color:var(--muted)}
+  .quote-band{
+    margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    background:var(--surface);
+  }
+  .qb-num{
+    background:var(--charcoal);color:#f2f1ea;padding:44px 40px;
+    display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+  }
+  .qb-num .big{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,72px);font-weight:800;line-height:1}
+  .qb-num .lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .qb-num .src{font-size:12.5px;color:rgba(242,241,234,.6)}
+  .qb-text{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+  .qb-text blockquote{
+    font-family:'Playfair Display',serif;font-size:clamp(19px,2.2vw,24px);
+    font-style:italic;line-height:1.5;
+  }
+  .qb-text blockquote em{color:var(--gold-deep)}
+  .qb-text cite{
+    display:block;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif;
+    font-style:normal;font-size:13.5px;color:var(--muted);
+  }
+
+  /* Catalog */
+  .catalog{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .catalog .sec-head{max-width:760px}
+  .cat-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+  .chip{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;
+    padding:8px 18px;border-radius:999px;border:1.5px solid var(--line);
+    background:var(--paper);color:var(--muted);cursor:pointer;transition:all .2s;
+  }
+  .chip:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+  .chip.on{background:var(--charcoal);border-color:var(--charcoal);color:var(--gold)}
+  .shelf{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));
+    gap:40px 32px;
+  }
+  .item{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .item .book{width:172px;height:258px;transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s}
+  .item:hover .book{transform:translateY(-10px) rotate(-1.5deg);box-shadow:0 34px 60px rgba(20,40,30,.28)}
+  .item h4{font-family:'Playfair Display',serif;font-size:19px;line-height:1.25;margin-top:24px}
+  .item .meta{font-size:13px;color:var(--muted);margin-top:5px}
+  .item .price{font-size:16px;margin-top:10px}
+  .item .buy{margin-top:10px}
+  .item .badge{
+    font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:10px;
+  }
+  .item .badge.new{background:var(--charcoal);color:var(--gold);padding:5px 13px;border-radius:999px}
+  /* Ragam sampul */
+  .cf1{background:linear-gradient(160deg,#6e352f,#451f1b)}
+  .cf2{background:linear-gradient(160deg,#2b4a3c,#16301f)}
+  .cf3{background:linear-gradient(160deg,#2a2f3a,#171b23)}
+  .cf4{background:linear-gradient(160deg,#f0c020,#c99a10);color:#211d13}
+  .cf4::before{background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.28) 60%,rgba(0,0,0,.10))}
+  .cf4 .rule{background:rgba(0,0,0,.4)}
+  .cf4.cf-dots::after{background:radial-gradient(rgba(0,0,0,.35) 1.2px,transparent 1.3px);background-size:9px 9px}
+  .cf5{background:linear-gradient(160deg,#3e5148,#243129)}
+  .cf6{background:linear-gradient(160deg,#4a3b63,#2c2240)}
+  .cf7{background:linear-gradient(160deg,#274b56,#142c33)}
+  .cf8{background:linear-gradient(160deg,#59524a,#332f2a)}
+  .book.gold{color:#211d13}
+  .book.gold::before{background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.28) 60%,rgba(0,0,0,.10))}
+  .book.gold .rule{background:rgba(0,0,0,.4)}
+  .book.gold .b-imprint,.book.gold .colophon{opacity:.7}
+  /* Dekor ragam sampul */
+  .book .rule{width:34px;height:2px;background:rgba(255,255,255,.55);margin:12px 0}
+  .book .orn{font-family:'Playfair Display',serif;font-size:26px;opacity:.5;line-height:1}
+  .book .colophon{font-family:'Plus Jakarta Sans',sans-serif;font-size:8px;letter-spacing:.08em;opacity:.55;line-height:1.5}
+  .cf-arch::after{
+    content:"";position:absolute;right:14px;top:14px;width:34px;height:48px;
+    border:1.5px solid rgba(255,255,255,.35);border-radius:17px 17px 0 0;
+  }
+  .cf-lines::after{
+    content:"";position:absolute;left:24px;right:24px;bottom:52px;height:34px;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.22) 0 1.5px,transparent 1.5px 9px);
+  }
+  .cf-sun::after{
+    content:"";position:absolute;right:16px;bottom:20px;width:44px;height:44px;
+    border:1.5px solid rgba(255,255,255,.4);border-radius:50%;
+    box-shadow:inset 0 0 0 6px rgba(255,255,255,.08);
+  }
+  .cf-dots::after{
+    content:"";position:absolute;right:16px;top:16px;width:40px;height:40px;
+    background:radial-gradient(rgba(255,255,255,.4) 1.2px,transparent 1.3px);
+    background-size:9px 9px;
+  }
+  .buy{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+    font-size:13.5px;font-weight:600;color:var(--gold-deep);
+    border-bottom:1.5px solid var(--gold-deep);padding-bottom:2px;
+    transition:color .2s;
+  }
+  .buy:hover{color:#6b5306}
+
+  /* Process */
+  .proc-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start}
+  .proc-side{position:sticky;top:96px}
+  .proc-side .sec-head{margin-bottom:28px}
+  .proc-side .btn{margin-top:8px}
+  .proc-note{
+    margin-top:28px;padding:20px 22px;border-left:3px solid var(--gold);
+    background:var(--gold-soft);border-radius:0 var(--radius) var(--radius) 0;
+    font-size:14px;color:var(--gold-deep);
+  }
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{
+    content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;
+    background:linear-gradient(var(--gold) 0%,var(--gold) 62%,var(--line) 62%);
+  }
+  .tstep{position:relative;padding:0 0 44px 22px}
+  .tstep:last-child{padding-bottom:0}
+  .tstep::before{
+    content:"";position:absolute;left:-34px;top:6px;width:18px;height:18px;
+    border-radius:50%;background:var(--surface);border:2.5px solid var(--gold);
+    box-shadow:0 0 0 5px var(--paper);
+  }
+  .tstep.done::before{background:var(--gold)}
+  .tstep .tn{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep)}
+  .tstep h4{font-family:'Playfair Display',serif;font-size:24px;margin:8px 0 10px}
+  .tstep p{font-size:15px;color:var(--muted);max-width:52ch}
+  .tstep .out{
+    display:inline-block;margin-top:14px;font-size:12.5px;font-weight:600;
+    color:var(--gold-deep);background:var(--gold-soft);
+    padding:6px 14px;border-radius:999px;
+  }
+
+  /* Packages */
+  .packages{background:var(--charcoal);color:#f2f1ea}
+  .packages .sec-head h2{color:#fff}
+  .packages .sec-head p{color:rgba(242,241,234,.72)}
+  .packages .kicker{color:var(--gold)}
+  .packages .kicker::before{background:var(--gold)}
+  .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pkg{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:34px 30px;position:relative;
+  }
+  .pkg.hot{background:#f7f5ee;color:var(--ink);border-color:transparent;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .pkg .tag{
+    position:absolute;top:-13px;left:30px;background:var(--gold);color:var(--charcoal);
+    font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 14px;border-radius:999px;
+  }
+  .pkg h3{font-size:23px}
+  .pkg .amount{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;margin:14px 0 4px}
+  .pkg .amount small{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;opacity:.65}
+  .pkg ul{list-style:none;margin-top:20px;display:grid;gap:11px}
+  .pkg li{display:flex;gap:10px;font-size:14.5px;align-items:baseline}
+  .pkg li::before{content:"✓";font-weight:700;color:var(--gold)}
+  .pkg.hot li::before{color:var(--gold-deep)}
+  .pkg .btn{margin-top:28px;width:100%;justify-content:center}
+  .pkg:not(.hot) .btn{background:var(--gold);color:var(--charcoal)}
+  .pkg:not(.hot) .btn:hover{background:#ddb015}
+
+  /* Contact CTA */
+  .contact .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .contact h2{font-size:clamp(28px,3.4vw,40px)}
+  .contact p{color:var(--muted);margin-top:14px;max-width:48ch}
+  .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:34px}
+  .contact-card h3{font-size:19px;margin-bottom:18px}
+  .contact-card .person{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .contact-card .person:last-of-type{border-bottom:none}
+  .contact-card .person span{color:var(--muted);font-size:13.5px}
+  .wa{
+    display:inline-flex;align-items:center;gap:7px;background:var(--gold-soft);color:var(--gold-deep);
+    font-size:13px;font-weight:600;padding:7px 15px;border-radius:999px;transition:background .2s;
+  }
+  .wa:hover{background:#f3e8c0}
+
+  /* Footer */
+  footer{background:var(--charcoal);color:#c9c9c2;padding:56px 0 32px}
+  .foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot .brand{color:#fff}
+  .foot .brand img{height:44px;width:auto;display:block}
+  .foot .brand img.inv{display:none}
+  .foot p{font-size:13.5px;max-width:38ch;margin-top:12px;color:#9a9a92}
+  .foot nav{display:grid;gap:8px;font-size:14px}
+  .foot nav a:hover{color:#fff}
+  .foot .label{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#7a7a72;margin-bottom:12px}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:13px;color:#8a8a82}
+  .foot-bottom b{color:var(--gold);font-weight:600}
+
+  /* Reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* Responsive */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-books{height:360px;max-width:480px}
+    .about-grid,.contact .wrap{grid-template-columns:1fr;gap:36px}
+    .quote-band{grid-template-columns:1fr}
+    .qb-num,.qb-text{padding:32px 28px}
+    .proc-grid{grid-template-columns:1fr;gap:40px}
+    .proc-side{position:static}
+    .cat-grid{grid-template-columns:1fr;gap:48px}
+    .pkg-grid{grid-template-columns:1fr;max-width:460px}
+  }
+  @media(max-width:620px){
+    section{padding:64px 0}
+    .hero{padding:48px 0 48px}
+    .shelf{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:32px 20px}
+    .item .book{width:132px;height:198px}
+    .item .book .b-title{font-size:15px}
+    .item .book .colophon{display:none}
+    .item h4{font-size:16.5px}
+    .hero-books .book{width:150px;height:225px}
+    .hero-books .book .b-title{font-size:16px}
+  }
+
+
+/* ===== HALAMAN DETAIL BUKU ===== */
+
+
+  /* ====== NAV ====== */
+  .brand small{font-weight:500;color:var(--muted);font-size:12px;display:block;line-height:1;margin-top:2px}
+
+  /* ====== BREADCRUMB ====== */
+  .crumb{padding:22px 0 0;font-size:13.5px;color:var(--muted)}
+  .crumb a:hover{color:var(--gold-deep)}
+  .crumb span{margin:0 8px;color:var(--line)}
+
+  /* ====== DETAIL ====== */
+  .detail{padding:36px 0 88px}
+  .d-grid{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+
+  /* Sampul */
+  .cover-col{position:sticky;top:96px}
+  .book{
+    position:relative;width:300px;height:450px;margin:0 auto;
+    border-radius:4px 14px 14px 4px;
+    background:linear-gradient(160deg,#f0c020,#c99a10);
+    box-shadow:0 32px 64px rgba(20,40,30,.28), 0 6px 14px rgba(20,40,30,.14);
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:28px 24px 26px 38px;color:#211d13;
+    font-family:'Playfair Display',serif;
+  }
+  .book::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:14px;
+    background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.28) 60%,rgba(0,0,0,.10));
+    border-radius:4px 0 0 4px;
+  }
+  .book::after{
+    content:"";position:absolute;right:8px;top:8px;bottom:8px;width:1px;
+    background:rgba(255,255,255,.16);
+  }
+  .book .b-imprint{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;opacity:.75}
+  .book .orn{font-size:34px;opacity:.55;line-height:1;margin:10px 0}
+  .book .b-title{font-size:34px;font-weight:800;line-height:1.15}
+  .book .rule{width:44px;height:2.5px;background:rgba(0,0,0,.4);margin:16px 0}
+  .book .b-author{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;letter-spacing:.08em;opacity:.85}
+  .book .colophon{font-family:'Plus Jakarta Sans',sans-serif;font-size:9.5px;letter-spacing:.1em;opacity:.55;line-height:1.6}
+  .book .cf-arch{
+    position:absolute;right:22px;top:22px;width:52px;height:72px;
+    border:1.5px solid rgba(0,0,0,.35);border-radius:26px 26px 0 0;
+  }
+  .cover-hint{text-align:center;margin-top:18px;font-size:12.5px;color:var(--muted)}
+
+  /* Info */
+  .info .badge{
+    display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--charcoal);background:var(--gold);
+    padding:5px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  .info h1{font-size:clamp(32px,4vw,46px);font-weight:800}
+  .byline{margin-top:10px;font-size:16px;color:var(--muted)}
+  .byline b{color:var(--ink);font-weight:600}
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .meta-row span{
+    font-size:13px;font-weight:600;color:var(--muted);
+    border:1.5px solid var(--line);background:var(--surface);
+    padding:6px 14px;border-radius:999px;
+  }
+  .price-line{display:flex;align-items:baseline;gap:14px;margin:28px 0 6px}
+  .price-lg{font-family:'Playfair Display',serif;font-size:38px;font-weight:800;color:var(--gold-deep)}
+  .price-note{font-size:13.5px;color:var(--muted)}
+  .buy-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 28px;border-radius:999px;font-weight:600;font-size:15.5px;
+    transition:transform .15s, background .2s, border-color .2s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--gold);color:var(--charcoal)}
+  .btn-solid:hover{background:#ddb015}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+  .trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+  .trust span{display:inline-flex;align-items:center;gap:6px}
+  .trust span::before{content:"✓";color:var(--gold-deep);font-weight:700}
+
+  /* Sinopsis */
+  .synopsis{margin-top:44px}
+  .synopsis h3{font-size:22px;margin-bottom:14px}
+  .synopsis p{color:var(--muted);font-size:16px;margin-bottom:16px;max-width:62ch}
+  .synopsis p:first-of-type::first-letter{
+    font-family:'Playfair Display',serif;font-size:52px;font-weight:700;
+    float:left;line-height:.85;padding:6px 10px 0 0;color:var(--gold-deep);
+  }
+
+  /* Data buku */
+  .spec{margin-top:44px;border-top:1px solid var(--line)}
+  .spec h3{font-size:22px;margin:26px 0 6px}
+  .spec table{width:100%;border-collapse:collapse;font-size:14.5px}
+  .spec th{
+    text-align:left;font-weight:600;color:var(--muted);
+    padding:12px 16px 12px 0;width:180px;vertical-align:top;
+  }
+  .spec td{padding:12px 0;color:var(--ink)}
+  .spec tr{border-bottom:1px solid var(--line)}
+  .spec .isbn{font-weight:700;color:var(--gold-deep)}
+
+  /* Penulis */
+  .author{margin-top:44px;display:flex;gap:22px;align-items:flex-start;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .avatar{
+    flex:0 0 64px;width:64px;height:64px;border-radius:50%;
+    background:var(--gold-soft);color:var(--gold-deep);
+    display:grid;place-items:center;
+    font-family:'Playfair Display',serif;font-size:22px;font-weight:800;
+  }
+  .author h3{font-size:19px;margin-bottom:4px}
+  .author p{font-size:14.5px;color:var(--muted)}
+
+  /* Terkait */
+  .related{padding:72px 0 88px;border-top:1px solid var(--line)}
+  .related h2{font-size:clamp(24px,3vw,32px);margin-bottom:36px}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .r-item{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .r-item .book{width:150px;height:225px;padding:16px 14px 14px 26px;transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s}
+  .r-item .book:hover{transform:translateY(-8px) rotate(-1.5deg)}
+  .r-item .book .b-title{font-size:17px}
+  .r-item .book .orn{font-size:22px;margin:6px 0}
+  .r-item .book .rule{width:28px;height:2px;margin:10px 0}
+  .r-item .book .colophon{display:none}
+  .r-item h4{font-family:'Playfair Display',serif;font-size:17.5px;margin-top:18px}
+  .r-item .meta{font-size:13px;color:var(--muted);margin-top:4px}
+  .r-item .price{font-weight:700;font-size:15px;color:var(--gold-deep);margin-top:8px}
+  .cf2{background:linear-gradient(160deg,#3a3323,#1f1b10)}
+  .cf3{background:linear-gradient(160deg,#2e2b26,#17150f)}
+  .cf4{background:linear-gradient(160deg,#f0c020,#c99a10);color:#211d13}
+  .cf4::before{background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.28) 60%,rgba(0,0,0,.10))}
+  .cf4 .rule{background:rgba(0,0,0,.4)}
+
+  /* Footer */
+  footer{background:var(--charcoal);color:#c9c9c2;padding:48px 0 32px}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#8a8a82}
+  .foot-bottom b{color:var(--gold);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media(max-width:960px){
+    .d-grid{grid-template-columns:1fr;gap:44px}
+    .cover-col{position:static}
+    .r-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:620px){
+    .detail{padding:24px 0 64px}
+    .book{width:240px;height:360px;padding:22px 18px 20px 30px}
+    .book .b-title{font-size:26px}
+    .r-grid{grid-template-columns:1fr}
+  }
+
+
+/* ===== HALAMAN KONTAK ===== */
+
+
+
+  /* PAGE HEAD */
+  .pagehead{padding:64px 0 8px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-deep);margin-bottom:18px;
+  }
+  .kicker::before{content:"";width:26px;height:2px;background:var(--gold)}
+  .pagehead h1{font-size:clamp(34px,4.6vw,52px);font-weight:800}
+  .pagehead p{margin-top:14px;color:var(--muted);font-size:17px;max-width:52ch}
+
+  /* GRID */
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;
+    padding:48px 0 24px;align-items:start;
+  }
+
+  /* Kartu kanal */
+  .channels{display:grid;gap:18px}
+  .chan{
+    display:flex;gap:18px;align-items:flex-start;
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:24px 26px;
+    transition:border-color .2s, transform .2s;
+  }
+  .chan:hover{border-color:var(--gold)}
+  .chan .ico{
+    flex:0 0 46px;width:46px;height:46px;border-radius:12px;
+    display:grid;place-items:center;font-size:20px;
+    background:var(--gold-soft);color:var(--gold-deep);
+  }
+  .chan.wa .ico{background:#e4f4e6;color:#1d7a43}
+  .chan h3{font-size:18px;margin-bottom:2px}
+  .chan .sub{font-size:13px;color:var(--muted);margin-bottom:10px}
+  .chan .val{font-size:15.5px;font-weight:600}
+  .chan .act{
+    display:inline-flex;margin-top:10px;font-size:13px;font-weight:600;
+    color:var(--gold-deep);border-bottom:1.5px solid var(--gold-deep);
+    padding-bottom:2px;transition:color .2s;
+  }
+  .chan .act:hover{color:#6b5306}
+
+  /* Kartu alamat + peta */
+  .map-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .map-frame{height:320px;border:0;width:100%;display:block}
+  .map-body{padding:24px 26px}
+  .map-body h3{font-size:18px;margin-bottom:6px}
+  .map-body p{font-size:14.5px;color:var(--muted)}
+  .map-body .act{
+    display:inline-flex;margin-top:14px;font-size:13px;font-weight:600;
+    color:var(--gold-deep);border-bottom:1.5px solid var(--gold-deep);
+    padding-bottom:2px;
+  }
+  .map-body .act:hover{color:#6b5306}
+
+  /* Jam layanan */
+  .hours{
+    margin-top:18px;background:var(--charcoal);color:#f2f1ea;
+    border-radius:var(--radius);padding:26px 28px;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;
+  }
+  .hours .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .hours .val{font-family:'Playfair Display',serif;font-size:21px;margin-top:4px}
+  .hours .note{font-size:13px;color:rgba(242,241,234,.65);max-width:34ch}
+
+  /* CTA naskah */
+  .ms-strip{padding:24px 0 88px}
+  .ms{
+    background:linear-gradient(135deg,var(--charcoal),#332c1a);
+    border-radius:var(--radius);padding:48px 52px;
+    display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
+  }
+  .ms h2{color:#fff;font-size:clamp(24px,3vw,34px)}
+  .ms p{color:rgba(242,241,234,.72);margin-top:10px;max-width:46ch}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 28px;border-radius:999px;font-weight:600;font-size:15.5px;
+    transition:transform .15s, background .2s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:var(--gold);color:var(--charcoal)}
+  .btn-gold:hover{background:#ddb015}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.3);color:#fff}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:#c9c9c2;padding:48px 0 32px}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#8a8a82}
+  .foot-bottom b{color:var(--gold);font-weight:600}
+
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media(max-width:960px){
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:620px){
+    .pagehead{padding:44px 0 4px}
+    .ms{padding:36px 28px}
+    .map-frame{height:260px}
+  }
+
+
+/* ===== HALAMAN ARTIKEL ===== */
+
+
+
+  /* ====== POST LAYOUT ====== */
+  .post-head{padding:48px 0 8px}
+  .crumb{font-size:13px;color:var(--muted);margin-bottom:22px}
+  .crumb a:hover{color:var(--gold-deep)}
+  .meta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+  .badge{
+    display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--gold-deep);
+    background:var(--gold-soft);padding:5px 13px;border-radius:999px;
+  }
+  .meta time{font-size:13px;color:var(--muted)}
+  .post-head h1{font-size:clamp(28px,4vw,44px);font-weight:800;max-width:24ch}
+  .post-head .lede{margin-top:14px;font-size:17px;color:var(--muted);max-width:62ch}
+
+  .post-grid{
+    display:grid;grid-template-columns:1fr 340px;gap:48px;
+    padding:40px 0 24px;align-items:start;
+  }
+
+  /* ====== ISI ARTIKEL ====== */
+  .post-body{min-width:0}
+  .post-body p{margin-bottom:18px;font-size:16.5px}
+  .post-body p:first-of-type::first-letter{
+    float:left;line-height:.85;padding:6px 10px 0 0;
+    font-family:'Playfair Display',serif;font-size:56px;font-weight:800;
+    color:var(--gold-deep);
+  }
+  .post-body h2{font-size:26px;margin:36px 0 14px}
+  .post-body h3{font-size:20px;margin:28px 0 10px}
+  .post-body blockquote{
+    border-left:3px solid var(--gold);background:var(--gold-soft);
+    padding:18px 24px;border-radius:0 var(--radius) var(--radius) 0;
+    font-family:'Playfair Display',serif;font-style:italic;font-size:18px;
+    color:var(--gold-deep);margin:26px 0;
+  }
+  .post-body ul{margin:0 0 18px 20px}
+  .post-body li{margin-bottom:8px}
+  .post-body figure{margin:28px 0}
+  .post-body figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+
+  .share{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin-top:36px;padding-top:24px;border-top:1px solid var(--line);
+  }
+  .share span{font-size:13px;font-weight:600;color:var(--muted)}
+  .share a{
+    font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;
+    border:1px solid var(--line);background:var(--surface);transition:all .2s;
+  }
+  .share a:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+
+  /* ====== SIDEBAR ====== */
+  .side{position:sticky;top:92px;display:grid;gap:24px}
+  .buy-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px;
+  }
+  .buy-card .price-lg{
+    font-family:'Playfair Display',serif;font-size:38px;font-weight:800;color:var(--gold-deep);
+  }
+  .buy-card .stok{font-size:13px;color:var(--muted);margin-top:4px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;
+    transition:transform .15s, background .2s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--gold);color:var(--charcoal)}
+  .btn-solid:hover{background:#ddb015}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink);background:var(--surface)}
+  .btn-ghost:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+  .buy-card .btn{width:100%;margin-top:16px}
+  .trust{margin-top:16px;display:grid;gap:8px;font-size:13px;color:var(--muted)}
+  .trust span::before{content:"✓";color:var(--gold-deep);font-weight:700;margin-right:8px}
+
+  .spec-card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px;
+  }
+  .spec-card h3{font-size:16px;margin-bottom:14px}
+  .spec{display:grid;gap:10px;font-size:14px}
+  .spec div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+  .spec div:last-child{border-bottom:0;padding-bottom:0}
+  .spec .k{color:var(--muted)}
+  .spec .v{font-weight:600;text-align:right}
+  .spec .isbn{font-weight:700;color:var(--gold-deep)}
+
+  /* Buku lain */
+  .related{padding:40px 0 88px}
+  .rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+  .r-item{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:18px;
+    display:flex;gap:16px;align-items:center;
+    transition:border-color .2s, transform .2s;
+  }
+  .r-item:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .r-item .book{width:58px;height:87px;flex:0 0 58px;border-radius:3px 8px 8px 3px;padding:10px 8px 10px 11px}
+  .r-item .book::before{width:4px}
+  .r-item .book .b-title{font-size:7px;letter-spacing:.02em}
+  .r-item h4{font-size:15px;line-height:1.3}
+  .r-item .price{font-weight:700;font-size:15px;color:var(--gold-deep);margin-top:8px}
+  .r-item a.stretch{position:absolute;inset:0}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:#c9c9c2;padding:48px 0 32px}
+  .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#8a8a82}
+  .foot-bottom b{color:var(--gold);font-weight:600}
+
+  @media(max-width:960px){
+    .post-grid{grid-template-columns:1fr}
+    .side{position:static;order:-1}
+    .rel-grid{grid-template-columns:1fr}
+  }
+
+]]></b:skin>
+</head>
+
+<body>
+<!-- ================= NAVBAR ================= -->
+<header id='topbar'>
+  <div class='wrap nav'>
+    <b:section class='brandsec' id='brandsec' maxwidgets='1' name='Logo' showaddelement='no'>
+      <b:widget id='Header1' locked='true' title='Penerbit Nuntera' type='Header'>
+        <b:includable id='main'>
+          <a class='brand' expr:href='data:blog.homepageUrl'>
+            <img alt='Logo Penerbit Nuntera' src='https://blogger.googleusercontent.com/img/b/REPLACE-LOGO-URL/s1600/logo-nuntera.png'/>
+          </a>
+        </b:includable>
+      </b:widget>
+    </b:section>
+    <nav class='menu'>
+      <a expr:href='data:blog.homepageUrl + &quot;p/tentang.html&quot;'>Tentang</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/Katalog&quot;'>Katalog</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/faq.html&quot;'>Tanya Jawab</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/kontak.html&quot;'>Kontak</a>
+    </nav>
+    <a class='cta' expr:href='data:blog.homepageUrl + &quot;p/kontak.html&quot;'>Kirim Naskah</a>
+  </div>
+</header>
+
+<b:if cond='!data:view.isPost'>
+<b:if cond='!data:view.isPage'>
+
+<!-- ================= HERO (hanya beranda) ================= -->
+<div class='hero' id='beranda'>
+  <div class='wrap hero-grid'>
+    <div>
+      <span class='kicker'>Penerbit Nuntera · Bojonegoro</span>
+      <h1>Menerbitkan gagasan, <em>berbagi kebaikan</em></h1>
+      <p class='sub'>Dari naskah mentah sampai buku tersebar ke pembaca: kami menemani setiap langkah penerbitan bukumu.</p>
+      <div class='hero-cta'>
+        <a class='btn btn-solid' href='#paket'>Mulai Menerbitkan</a>
+        <a class='btn btn-ghost' href='#katalog'>Lihat Katalog</a>
+      </div>
+    </div>
+    <div class='hero-books' aria-hidden='true'>
+      <div class='book hb1'><span class='b-imprint'>Nuntera</span><span class='rule'></span><span class='b-title'>Tidak Pulang Tidak Menyerah</span><span class='colophon'>Lilik Budi Witoyo</span></div>
+      <div class='book hb2'><span class='b-imprint'>Nuntera</span><span class='rule'></span><span class='b-title'>Dongeng Sebelum Makan</span><span class='colophon'>Kumpulan cerita</span></div>
+      <div class='book hb3'><span class='b-imprint'>Nuntera</span><span class='rule'></span><span class='b-title'>Tarikh Padangan</span><span class='colophon'>A. Wahyu Rizkiawan</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STRIP -->
+<div class='strip'>
+  <div class='wrap'>
+    <span><b>Sunting</b> · tata letak</span>
+    <span><b>Sampul</b> · desain khusus</span>
+    <span><b>Cetak</b> · sesuai pesanan</span>
+    <span><b>Distribusi</b> · nasional</span>
+  </div>
+</div>
+
+</b:if>
+</b:if>
+
+<!-- ================= KONTEN BLOG ================= -->
+<main class='wrap' id='konten'>
+<b:section class='mainblog' id='main' name='Konten Utama' showaddelement='no'>
+  <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog'>
+    <b:includable id='main' var='this'>
+      <b:with value='data:posts[0]' var='post'>
+        <b:if cond='data:view.isPost'>
+          <b:include data='post' name='postDetail'/>
+        <b:else/>
+        <b:if cond='data:view.isPage'>
+          <b:include data='post' name='postPage'/>
+        <b:else/>
+          <b:include name='postList'/>
+        </b:if>
+        </b:if>
+      </b:with>
+    </b:includable>
+
+    <b:includable id='postList'>
+      <!-- daftar postingan: gaya katalog -->
+      <div class='list-head'>
+        <span class='kicker'>Katalog</span>
+        <h2>Buku terbitan kami</h2>
+        <p>Setiap judul lahir dari naskah yang kami yakini kekuatannya. Klik sampul untuk memesan lewat WhatsApp.</p>
+      </div>
+      <div class='shelf'>
+        <b:loop values='data:posts' var='post'>
+          <article class='item'>
+            <a expr:href='data:post.url'>
+              <div class='book cf1'>
+                <span class='b-imprint'>Nuntera</span>
+                <span class='rule'></span>
+                <span class='b-title'><data:post.title/></span>
+                <span class='colophon'><data:post.author/></span>
+              </div>
+            </a>
+            <h4><a expr:href='data:post.url'><data:post.title/></a></h4>
+            <p class='desc'><data:post.snippet/></p>
+            <a class='buy' expr:href='data:post.url'>Selengkapnya →</a>
+          </article>
+        </b:loop>
+      </div>
+      <div class='pager'>
+        <b:if cond='data:olderPageUrl'>
+          <a class='btn btn-ghost' expr:href='data:olderPageUrl'>← Judul sebelumnya</a>
+        </b:if>
+        <b:if cond='data:newerPageUrl'>
+          <a class='btn btn-ghost' expr:href='data:newerPageUrl'>Judul berikutnya →</a>
+        </b:if>
+      </div>
+    </b:includable>
+
+    <b:includable id='postDetail' var='post'>
+      <!-- halaman postingan: gaya detail buku -->
+      <div class='post-head'>
+        <p class='crumb'><a expr:href='data:blog.homepageUrl'>Beranda</a> › <data:post.title/></p>
+        <div class='meta'>
+          <b:if cond='data:post.labels'>
+            <b:loop values='data:post.labels' var='label'>
+              <b:if cond='data:label.isLast'>
+                <span class='badge'><data:label.name/></span>
+              </b:if>
+            </b:loop>
+          </b:if>
+          <time><data:post.timestamp/></time>
+        </div>
+        <h1><data:post.title/></h1>
+      </div>
+      <div class='post-grid'>
+        <article class='post-body'>
+          <data:post.body/>
+          <div class='share'>
+            <span>Bagikan:</span>
+            <a expr:href='&quot;https://wa.me/?text=&quot; + data:post.title + &quot; &quot; + data:post.url'>WhatsApp</a>
+            <a expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:post.url'>Facebook</a>
+            <a expr:href='&quot;https://twitter.com/intent/tweet?text=&quot; + data:post.title + &quot;&amp;url=&quot; + data:post.url'>X</a>
+          </div>
+        </article>
+        <aside class='side'>
+          <div class='buy-card'>
+            <div class='price-lg'>Pesan buku ini</div>
+            <p class='stok'>Pesan lewat WhatsApp, bayar saat kirim atau sesuai kesepakatan.</p>
+            <a class='btn btn-solid' expr:href='&quot;https://wa.me/6285141068902?text=Halo%2C%20saya%20ingin%20memesan%20buku%20&quot; + data:post.title'>Pesan via WhatsApp</a>
+            <a class='btn btn-ghost' expr:href='data:blog.homepageUrl + &quot;p/kontak.html&quot;'>Tanya Dulu</a>
+            <div class='trust'>
+              <span>Dikirim ke seluruh Indonesia</span>
+              <span>Bisa pesan lebih dari satu judul</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </b:includable>
+
+    <b:includable id='postPage' var='post'>
+      <!-- halaman statis: konten polos lebar -->
+      <div class='page-wrap'>
+        <h1 class='page-title'><data:post.title/></h1>
+        <div class='post-body'>
+          <data:post.body/>
+        </div>
+      </div>
+    </b:includable>
+  </b:widget>
+</b:section>
+</main>
+
+<b:if cond='!data:view.isPost'>
+<b:if cond='!data:view.isPage'>
+
+<!-- ================= PROSES ================= -->
+<section class='process' id='proses'>
+  <div class='wrap proc-grid'>
+    <div class='proc-side'>
+      <span class='kicker'>Proses</span>
+      <h2>Dari naskah ke tangan pembaca</h2>
+      <p>Empat tahap yang kami temani satu per satu, tanpa kamu melompat sendirian.</p>
+      <a class='btn btn-solid' href='#kontak'>Mulai dari Tahap 1</a>
+    </div>
+    <div class='timeline'>
+      <div class='tstep done'>
+        <span class='tn'>Tahap 01</span>
+        <h4>Konsultasi Naskah</h4>
+        <p>Kirim naskah atau ceritakan gagasanmu lewat WhatsApp. Kami baca dan jelaskan langkah yang paling cocok.</p>
+      </div>
+      <div class='tstep'>
+        <span class='tn'>Tahap 02</span>
+        <h4>Penyuntingan &amp; Tata Letak</h4>
+        <p>Naskah disunting dan ditata agar nyaman dibaca dan halamannya rapi.</p>
+      </div>
+      <div class='tstep'>
+        <span class='tn'>Tahap 03</span>
+        <h4>Desain Sampul</h4>
+        <p>Sampul dirancang untuk mewakili isimu dan menarik mata pembaca, lengkap dengan mockup tampilan sebelum dicetak.</p>
+      </div>
+      <div class='tstep'>
+        <span class='tn'>Tahap 04</span>
+        <h4>Cetak &amp; Distribusi</h4>
+        <p>Buku dicetak sesuai paket, lalu didistribusikan secara nasional dan didaftarkan ke katalog resmi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAKET ================= -->
+<section class='packages' id='paket'>
+  <div class='wrap'>
+    <span class='kicker'>Paket</span>
+    <h2>Paket penerbitan</h2>
+    <div class='pkg-grid'>
+      <div class='pkg'>
+        <h3>Hemat</h3>
+        <p class='p-price'>Rp500.000</p>
+        <p class='p-desc'>Cetak 5 eksemplar. Desain sampul, materi promosi.</p>
+        <a class='btn' href='https://wa.me/6285141068902?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20Paket%20Hemat'>Pilih Paket</a>
+      </div>
+      <div class='pkg hot'>
+        <span class='p-badge'>Paling Dipilih</span>
+        <h3>Murah</h3>
+        <p class='p-price'>Rp1.000.000</p>
+        <p class='p-desc'>Cetak 15 eksemplar. Desain sampul, materi promosi.</p>
+        <a class='btn' href='https://wa.me/6285141068902?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20Paket%20Murah'>Pilih Paket</a>
+      </div>
+      <div class='pkg'>
+        <h3>Primadona</h3>
+        <p class='p-price'>Rp2.500.000</p>
+        <p class='p-desc'>Cetak 50 eksemplar. Desain sampul, materi promosi.</p>
+        <a class='btn' href='https://wa.me/6285141068902?text=Halo%2C%20saya%20ingin%20bertanya%20tentang%20Paket%20Primadona'>Pilih Paket</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KONTAK RINGKAS ================= -->
+<section class='contact' id='kontak'>
+  <div class='wrap'>
+    <span class='kicker'>Kontak</span>
+    <h2>Siap menerbitkan bukumu?</h2>
+    <p>Konsultasikan dan kirim naskahmu ke Penerbit Nuntera, lalu jadilah bagian dari penyebar kebaikan dengan buku.</p>
+    <div class='c-row'>
+      <a class='wa' href='https://wa.me/6285141068902'>0851-4106-8902 · Tohir</a>
+      <a class='wa' href='https://wa.me/6282233904971'>0822-3390-4971 · Nanang</a>
+      <a class='wa' href='mailto:nunbuku@gmail.com'>nunbuku@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</b:if>
+</b:if>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class='wrap'>
+    <div class='foot-bottom'>
+      <span>© 2026 Penerbit Nuntera · Kelompok Usaha PT Nuntera Merdeka Pusaka · <a href='/p/privasi.html'>Kebijakan Privasi</a></span>
+      <span><b>nuntera.id</b> · situs resmi Penerbit Nuntera</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= SKRIP ================= -->
+<script>
+//<![CDATA[
+  const hdr = document.querySelector('header');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 10), {passive:true});
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+//]]>
+</script>
+</body>
+</html>

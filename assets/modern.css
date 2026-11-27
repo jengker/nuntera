@@ -1,0 +1,114 @@
+/* Penerbit Nuntera — lapisan desain 2026 (di atas style.css gabungan) */
+
+/* ====== NAV: sticky + blur ====== */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,248,241,.82);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+header.scrolled{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(34,30,20,.02),0 8px 24px -18px rgba(34,30,20,.25)}
+
+/* Tombol hamburger (disuntik site.js di layar kecil) */
+.nav-toggle{
+  display:none;align-items:center;justify-content:center;
+  width:42px;height:42px;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface);cursor:pointer;color:var(--ink);
+}
+.nav-toggle svg{width:20px;height:20px;display:block}
+@media(max-width:820px){
+  .nav-toggle{display:flex}
+  nav.menu{
+    display:none;
+    position:absolute;top:68px;left:0;right:0;
+    background:var(--surface);border-bottom:1px solid var(--line);
+    flex-direction:column;gap:0;padding:8px 24px 16px;
+    box-shadow:0 24px 40px -24px rgba(34,30,20,.3);
+  }
+  nav.menu.open{display:flex}
+  nav.menu a{padding:13px 2px;border-bottom:1px solid var(--line);font-size:15.5px}
+  nav.menu a:last-child{border-bottom:none}
+}
+body.menu-open{overflow:hidden}
+
+/* ====== TIPOGRAFI HERO ====== */
+.hero{padding:96px 0 88px;position:relative}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.06;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--gold-deep);position:relative;white-space:nowrap}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;
+  background:var(--gold);opacity:.35;z-index:-1;border-radius:2px;
+}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-deep);font-weight:600;
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--gold);border-radius:2px}
+.hero .lead{font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.65;color:var(--muted);max-width:52ch}
+
+/* ====== TOMBOL ====== */
+.btn,.nav .cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:600;border-radius:12px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn-solid,.nav .cta{
+  background:var(--charcoal);color:#fff;
+  box-shadow:0 10px 24px -12px rgba(34,30,20,.45);
+}
+.btn-solid:hover,.nav .cta:hover{background:#000;transform:translateY(-1px);box-shadow:0 14px 28px -12px rgba(34,30,20,.5)}
+.btn-gold{background:var(--gold);color:var(--charcoal);box-shadow:0 10px 24px -12px rgba(240,192,32,.55)}
+.btn-gold:hover{background:#e6b514;transform:translateY(-1px)}
+.btn-ghost{border:1.5px solid var(--line);background:var(--surface)}
+.btn-ghost:hover{border-color:var(--gold-deep);color:var(--gold-deep)}
+
+/* ====== KARTU: hover lift ====== */
+.book-card,.pkg,.chan,.fact,.item,.legal-card,.contact-card{
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.book-card:hover,.pkg:hover,.chan:hover,.fact:hover,.item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px -22px rgba(34,30,20,.35);
+  border-color:var(--gold);
+}
+
+/* ====== SAMBUTAN/SAMPUL BUKU: kilau punggung ====== */
+.book{position:relative;overflow:hidden}
+.book::after{
+  content:"";position:absolute;top:0;bottom:0;left:10%;width:8px;
+  background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,0));
+  border-radius:2px;
+}
+
+/* ====== SEKSI: ritme napas ====== */
+section{scroll-margin-top:76px}
+.strip{font-size:14px}
+.sec-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+
+/* ====== WHATSAPP MENGAMBANG ====== */
+.wa-float{
+  position:fixed;right:20px;bottom:20px;z-index:60;
+  display:flex;align-items:center;gap:10px;
+  background:#1ebe5d;color:#fff;font-weight:600;font-size:14.5px;
+  padding:13px 18px;border-radius:999px;
+  box-shadow:0 14px 32px -10px rgba(30,190,93,.55);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 18px 38px -10px rgba(30,190,93,.6)}
+.wa-float svg{width:20px;height:20px;fill:currentColor;flex:none}
+@media(max-width:620px){.wa-float span{display:none}.wa-float{padding:15px}}
+
+/* ====== FOOTER: aksen emas ====== */
+.foot-bottom b{border-bottom:2px solid var(--gold)}
+
+/* ====== REVEAL: lebih halus ====== */
+.rv{transform:translateY(16px)}
+.rv.in{transform:none}
+
+/* ====== REDUCED MOTION ====== */
+@media(prefers-reduced-motion:reduce){
+  .btn,.btn-solid,.nav .cta,.book-card,.pkg,.chan,.fact,.item,.wa-float{transition:none}
+  .rv{opacity:1;transform:none;transition:none}
+}

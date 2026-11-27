@@ -1,0 +1,117 @@
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="nuntera-template.html">
+      <img src="logo-nuntera.png" alt="Logo Penerbit Nuntera">
+    </a>
+    <nav class="menu">
+      <a href="nuntera-template.html#tentang">Tentang</a>
+      <a href="nuntera-template.html#katalog">Katalog</a>
+      <a href="nuntera-template.html#proses">Proses</a>
+      <a href="nuntera-template.html#paket">Paket</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+    <a class="cta" href="#naskah">Kirim Naskah</a>
+  </div>
+</header>
+
+<!-- PAGE HEAD -->
+<div class="pagehead">
+  <div class="wrap">
+    <span class="kicker">Kontak</span>
+    <h1>Ada naskah, atau sekadar ingin bertanya?</h1>
+    <p>Hubungi kami lewat kanal mana pun yang paling nyaman. Kami menjawab secepat yang kami bisa, terutama di jam kerja.</p>
+  </div>
+</div>
+
+<!-- KONTAK -->
+<section>
+  <div class="wrap contact-grid">
+
+    <div class="channels">
+      <div class="chan wa rv">
+        <span class="ico">✆</span>
+        <div>
+          <h3>WhatsApp</h3>
+          <p class="sub">Cara tercepat. Klik langsung terbuka dengan pesan siap kirim.</p>
+          <div class="val">0851-4106-8902 · Tohir</div>
+          <a class="act" href="https://wa.me/6285141068902">Chat Tohir &rarr;</a>
+        </div>
+      </div>
+      <div class="chan wa rv">
+        <span class="ico">✆</span>
+        <div>
+          <h3>WhatsApp</h3>
+          <p class="sub">Untuk urusan penerbitan dan naskah.</p>
+          <div class="val">0822-3390-4971 · Nanang Fahrudin</div>
+          <a class="act" href="https://wa.me/6282233904971">Chat Nanang &rarr;</a>
+        </div>
+      </div>
+      <div class="chan rv">
+        <span class="ico">✉</span>
+        <div>
+          <h3>Email</h3>
+          <p class="sub">Untuk pengiriman naskah lengkap dan berkas penerbitan.</p>
+          <div class="val">nunbuku@gmail.com</div>
+          <a class="act" href="mailto:nunbuku@gmail.com?subject=Pengiriman%20Naskah%20-%20Penerbit%20Nuntera">Tulis email &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="map-card rv">
+        <iframe class="map-frame" title="Lokasi Penerbit Nuntera di Google Maps"
+          src="https://www.google.com/maps?q=Desa%20Bungur%20Kecamatan%20Kanor%20Kabupaten%20Bojonegoro&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-body">
+          <h3>Alamat Kantor</h3>
+          <p>RT 2 RW 5, Desa Bungur, Kecamatan Kanor, Kabupaten Bojonegoro, Jawa Timur</p>
+          <a class="act" href="https://maps.app.goo.gl/uARFywCQWct1cYXJ6" target="_blank" rel="noopener">Buka di Google Maps &rarr;</a>
+        </div>
+      </div>
+      <div class="hours rv">
+        <div>
+          <div class="lbl">Jam Layanan</div>
+          <div class="val">Senin&ndash;Sabtu, 08.00&ndash;17.00</div>
+        </div>
+        <p class="note">Di luar jam layanan, kirim saja pesan. Kami balas di kesempatan pertama.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA NASKAH -->
+<div class="ms-strip" id="naskah">
+  <div class="wrap">
+    <div class="ms rv">
+      <div>
+        <h2>Punya naskah yang siap diterbitkan?</h2>
+        <p>Ceritakan gagasanmu lewat WhatsApp atau email. Kami bantu hitung langkahnya dari awal.</p>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn btn-gold" href="https://wa.me/6285141068902?text=Halo%2C%20saya%20ingin%20konsultasi%20naskah">Kirim Naskah</a>
+        <a class="btn btn-ghost" href="nuntera-template.html#paket">Lihat Paket</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 Penerbit Nuntera · Kelompok Usaha PT Nuntera Merdeka Pusaka</span>
+        <span><a href="privasi.html" style="border-bottom:1px solid currentColor">Kebijakan Privasi</a></span>
+      <span><b>nuntera.id</b> · situs resmi Penerbit Nuntera</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
